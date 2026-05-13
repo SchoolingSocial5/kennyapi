@@ -1,0 +1,57 @@
+import express, { Application, Request, Response, NextFunction } from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import dotenv from 'dotenv';
+import authRoutes from './routes/authRoutes';
+import companyRoutes from './routes/companyRoutes';
+import serviceRoutes from './routes/serviceRoutes';
+import faqRoutes from './routes/faqRoutes';
+
+dotenv.config();
+
+const app: Application = express();
+
+// Middleware
+app.use(helmet({
+  crossOriginResourcePolicy: false,
+}));
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Request Logger with Time
+app.use((req: Request, res: Response, next: NextFunction) => {
+  const startTime = new Date().toISOString();
+  console.log(`[${startTime}] ${req.method} ${req.originalUrl} - Request Received`);
+
+  const start = Date.now();
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl} [${res.statusCode}] - ${duration}ms`);
+  });
+  next();
+});
+
+// Health Check
+app.get('/health', (req: Request, res: Response) => {
+  res.status(200).json({ status: 'OK', message: 'Kenny Tech API is running' });
+});
+
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/company', companyRoutes);
+app.use('/api/services', serviceRoutes);
+app.use('/api/faq', faqRoutes);
+
+// Error Handling Middleware
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  console.error(err.stack);
+  res.status(500).json({
+    status: 'Error',
+    message: err.message || 'Internal Server Error',
+  });
+});
+
+export default app;
