@@ -35,13 +35,12 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 const ServiceSchema = new mongoose_1.Schema({
+    image: { type: String, required: true },
+    icon: { type: String, required: true },
     title: { type: String, required: true },
-    picture: { type: String, required: true },
-    youtubeUrl: { type: String },
-    description: { type: String, required: true },
-    minPrice: { type: Number, required: true },
-    maxPrice: { type: Number, required: true },
-    maxDuration: { type: String, required: true },
+    subtitle: { type: String, required: true },
+    content: { type: String, required: true },
+    videoUrl: { type: String },
 }, { timestamps: true });
 exports.default = mongoose_1.default.model('Service', ServiceSchema);
 //# sourceMappingURL=Service.js.map

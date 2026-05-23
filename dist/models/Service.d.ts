@@ -1,12 +1,11 @@
 import mongoose, { Document } from 'mongoose';
 export interface IService extends Document {
+    image: string;
+    icon: string;
     title: string;
-    picture: string;
-    youtubeUrl?: string;
-    description: string;
-    minPrice: number;
-    maxPrice: number;
-    maxDuration: string;
+    subtitle: string;
+    content: string;
+    videoUrl?: string;
     createdAt: Date;
     updatedAt: Date;
 }

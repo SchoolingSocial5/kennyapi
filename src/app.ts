@@ -7,6 +7,10 @@ import authRoutes from './routes/authRoutes';
 import companyRoutes from './routes/companyRoutes';
 import serviceRoutes from './routes/serviceRoutes';
 import faqRoutes from './routes/faqRoutes';
+import emailTemplateRoutes from './routes/emailTemplateRoutes';
+import notificationTemplateRoutes from './routes/notificationTemplateRoutes';
+import projectRoutes from './routes/projectRoutes';
+import blogRoutes from './routes/blogRoutes';
 
 dotenv.config();
 
@@ -17,8 +21,8 @@ app.use(helmet({
   crossOriginResourcePolicy: false,
 }));
 const allowedOrigins = [
-  'http://localhost:3000',
-  'http://127.0.0.1:3000',
+  'http://localhost:3002',
+  'http://127.0.0.1:3002',
   'https://kennytechstudios.com',
   'https://www.kennytechstudios.com'
 ];
@@ -62,6 +66,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/company', companyRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/faq', faqRoutes);
+app.use('/api/email-templates', emailTemplateRoutes);
+app.use('/api/notification-templates', notificationTemplateRoutes);
+app.use('/api/projects', projectRoutes);
+app.use('/api/blogs', blogRoutes);
 
 // Error Handling Middleware
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {

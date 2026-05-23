@@ -1,23 +1,25 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-export interface IService extends Document {
+export interface IBlog extends Document {
   image: string;
-  icon: string;
   title: string;
   subtitle: string;
+  category: string;
+  author: string;
   content: string;
-  videoUrl?: string;
+  date: Date;
   createdAt: Date;
   updatedAt: Date;
 }
 
-const ServiceSchema: Schema = new Schema({
+const BlogSchema: Schema = new Schema({
   image: { type: String, required: true },
-  icon: { type: String, required: true },
   title: { type: String, required: true },
   subtitle: { type: String, required: true },
+  category: { type: String, required: true },
+  author: { type: String, required: true },
   content: { type: String, required: true },
-  videoUrl: { type: String },
+  date: { type: Date, default: Date.now },
 }, { timestamps: true });
 
-export default mongoose.model<IService>('Service', ServiceSchema);
+export default mongoose.model<IBlog>('Blog', BlogSchema);
