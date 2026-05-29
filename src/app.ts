@@ -11,6 +11,8 @@ import emailTemplateRoutes from './routes/emailTemplateRoutes';
 import notificationTemplateRoutes from './routes/notificationTemplateRoutes';
 import projectRoutes from './routes/projectRoutes';
 import blogRoutes from './routes/blogRoutes';
+import jobRoutes from './routes/jobRoutes';
+import tutorialRoutes from './routes/tutorialRoutes';
 
 dotenv.config();
 
@@ -70,6 +72,8 @@ app.use('/api/email-templates', emailTemplateRoutes);
 app.use('/api/notification-templates', notificationTemplateRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/blogs', blogRoutes);
+app.use('/api/jobs', jobRoutes);
+app.use('/api/tutorials', tutorialRoutes);
 
 // Error Handling Middleware
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {

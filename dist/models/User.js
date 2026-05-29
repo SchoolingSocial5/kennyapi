@@ -43,6 +43,10 @@ const UserSchema = new mongoose_1.Schema({
         enum: ['user', 'staff', 'admin'],
         default: 'user',
     },
+    position: {
+        type: String,
+        default: 'General Staff',
+    },
 }, { timestamps: true });
 exports.default = mongoose_1.default.model('User', UserSchema);
 //# sourceMappingURL=User.js.map

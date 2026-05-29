@@ -4,6 +4,7 @@ export interface IUser extends Document {
     email: string;
     password?: string;
     status: 'user' | 'staff' | 'admin';
+    position?: string;
     createdAt: Date;
     updatedAt: Date;
 }

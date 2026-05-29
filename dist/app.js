@@ -16,6 +16,8 @@ const emailTemplateRoutes_1 = __importDefault(require("./routes/emailTemplateRou
 const notificationTemplateRoutes_1 = __importDefault(require("./routes/notificationTemplateRoutes"));
 const projectRoutes_1 = __importDefault(require("./routes/projectRoutes"));
 const blogRoutes_1 = __importDefault(require("./routes/blogRoutes"));
+const jobRoutes_1 = __importDefault(require("./routes/jobRoutes"));
+const tutorialRoutes_1 = __importDefault(require("./routes/tutorialRoutes"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 // Middleware
@@ -68,6 +70,8 @@ app.use('/api/email-templates', emailTemplateRoutes_1.default);
 app.use('/api/notification-templates', notificationTemplateRoutes_1.default);
 app.use('/api/projects', projectRoutes_1.default);
 app.use('/api/blogs', blogRoutes_1.default);
+app.use('/api/jobs', jobRoutes_1.default);
+app.use('/api/tutorials', tutorialRoutes_1.default);
 // Error Handling Middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
